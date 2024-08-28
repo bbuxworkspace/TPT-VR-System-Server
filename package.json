@@ -1,0 +1,38 @@
+{
+  "name": "book-reading-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "mocha --exit",
+    "create-admin": "node admin.js",
+    "dev": "nodemon server/index.js",
+    "generateKey": "node genKeyPair.js",
+    "setup": "node setup.js"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.17.2",
+    "firebase-admin": "^10.0.2",
+    "helmet": "^5.0.2",
+    "http-errors": "^2.0.0",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "scrypt-js": "^3.0.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "jest": "^29.7.0",
+    "mocha": "^10.7.3",
+    "supertest": "^7.0.0",
+    "nodemon": "^2.0.22"
+  }
+}
