@@ -38,7 +38,9 @@ const saveImage = async (image) => {
     // Save the files
     await Promise.all([
         fs.writeFile(path.resolve(`data/image/small/${imageName}`), smallImage),
-        fs.writeFile(path.resolve(`data/image/big/${imageName}`), biggerImage)
+        fs.writeFile(path.resolve(`data/image/big/${imageName}`), biggerImage),
+        fs.writeFile(path.resolve(`tpt-vr-system-react/public/assets/floors/${imageName}`), biggerImage)
+
     ]);
 
     return imageName;
@@ -49,7 +51,8 @@ const deleteImage = async (imageName) => {
     try {
         await Promise.all([
             fs.unlink(path.resolve(`data/image/small/${imageName}`)),
-            fs.unlink(path.resolve(`data/image/big/${imageName}`))
+            fs.unlink(path.resolve(`data/image/big/${imageName}`)),
+            fs.unlink(path.resolve(`tpt-vr-system-client/public/assets/floors/${imageName}`), biggerImage)
         ]);
     }
     catch(error) {

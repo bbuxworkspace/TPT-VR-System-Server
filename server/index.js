@@ -39,7 +39,6 @@ app.use(cors({
         }
     },
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow all methods
-    allowedHeaders: ['Content-Type'],
     credentials: true // Allow cookies and other credentials
 }));
 // Setup express middlewares'
