@@ -19,7 +19,6 @@ const tileSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['Bathroom', 'Floor'], // or ['Bathroom Tiles', 'Floor Tiles']
     required: true,
   },
   image: {

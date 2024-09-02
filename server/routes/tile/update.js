@@ -15,23 +15,28 @@ router.patch('/:id', upload.single('image'), async (req, res, next) => {
         if (price) updateData.price = price;
         if (category) updateData.category = category;
 
+        // Find the tile first to retrieve the old image URL if it exists
+        const tile = await Tile.findById(id);
+        if (!tile) throw createError(404, 'Tile not found');
+
+        // If a new image is uploaded, save it and update the image field
         if (req.file) {
-            const image = await saveImage(req.file);
-            updateData.image = image;
+            const newImage = await saveImage(req.file);
+            updateData.image = newImage;
+
+            // Delete the old image if it exists
+            if (tile.image) {
+                await deleteImage(tile.image);
+            }
         }
 
-        const tile = await Tile.findOneAndUpdate({ _id: id }, { $set: updateData });
-
-        if (!tile) throw createError(404, 'Tile not found');
+        // Update the tile with new data
+        await Tile.findByIdAndUpdate(id, { $set: updateData });
 
         res.json({
             message: 'Tile updated successfully',
         });
 
-        // Delete the old image if a new one is uploaded
-        if (req.file) {
-            await deleteImage(tile.image);
-        }
     } catch (error) {
         next(error);
     }

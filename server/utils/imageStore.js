@@ -52,8 +52,7 @@ const deleteImage = async (imageName) => {
         await Promise.all([
             fs.unlink(path.resolve(`data/image/small/${imageName}`)),
             fs.unlink(path.resolve(`data/image/big/${imageName}`)),
-            fs.unlink(path.resolve(`tpt-vr-system-client/public/assets/floors/${imageName}`), biggerImage)
-        ]);
+            fs.unlink(path.resolve(`tpt-vr-system-client/public/assets/floors/${imageName}`))        ]);
     }
     catch(error) {
         console.log(error.message);
